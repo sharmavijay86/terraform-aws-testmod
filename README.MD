@@ -32,4 +32,9 @@ module "mymod" {
   instance_type     = "t2.micro"
   instance_tags     = { Name = "myvm${count.index}" }
 }
+
+output "ec2_public_id" {
+  description = "The IP of the instance"
+  value       = module.mymod[*].public_ip
+}
 ```
